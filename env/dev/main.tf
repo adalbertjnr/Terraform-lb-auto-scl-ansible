@@ -13,6 +13,7 @@ module "dev" {
   min_size = 1
   scaling_group = "dev-scaling"
   auto_scaling_ec2_name = "dev-autoscl"
+  policy_name = "ec2-scale"
   subnet_cidr = [for i in range(1,4,2) : cidrsubnet(var.vpc_cidr, 8, i)]
   sg_name = "dev"
   lb_name = "dev-lb"
