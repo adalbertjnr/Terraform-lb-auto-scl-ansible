@@ -25,7 +25,13 @@ locals {
           to_port = 443
           protocol = "tcp"
           cidr_blocks = local.access_from
-        }        
+        }
+        locust = {
+          from_port = 8089
+          to_port = 8089
+          protocol = "tcp"
+          cidr_blocks = local.access_from
+        }          
       }
     }
   }
