@@ -18,7 +18,7 @@ tee -a playbook.yml > dev/null <<EOT
     git:
       repo: https://github.com/souzafgg/souzafgg-api4-terraform.git
       dest: /home/ubuntu/tcc
-      version: master
+      version: main
       force: yes
   - name: Instalando dependencias com pip (Django e Django Rest)
     pip:
