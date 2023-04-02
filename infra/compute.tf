@@ -11,6 +11,18 @@ resource "aws_autoscaling_group" "ec2_scaling_group" {
   target_group_arns = [aws_lb_target_group.lb_tg.arn]
 }
 
+resource "aws_autoscaling_policy" "auto_sc_policy" {
+  name = var.policy_name
+  autoscaling_group_name = aws_autoscaling_group.ec2_scaling_group.name
+  policy_type = "TargetTrackingScaling"
+  target_tracking_configuration {
+    predefined_metric_specification {
+      predefined_metric_type = "ASGAverageCPUUtilization"
+    }
+    target_value = 80.0
+  }
+}
+
 resource "aws_launch_template" "ec2_template" {
   name          = var.auto_scaling_ec2_name
   image_id      = "ami-09cd747c78a9add63"
