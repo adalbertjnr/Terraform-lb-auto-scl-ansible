@@ -31,7 +31,13 @@ locals {
           to_port = 8089
           protocol = "tcp"
           cidr_blocks = local.access_from
-        }          
+        }    
+        app = {
+          from_port = 8000
+          to_port = 8000
+          protocol = "tcp"
+          cidr_blocks = local.access_from
+        }                
       }
     }
   }
